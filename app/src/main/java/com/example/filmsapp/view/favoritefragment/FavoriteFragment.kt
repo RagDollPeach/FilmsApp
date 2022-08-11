@@ -1,12 +1,11 @@
 package com.example.filmsapp.view.favoritefragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmsapp.MAIN
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFavoriteBinding
 import com.example.filmsapp.view.mainfragment.MainAdapter

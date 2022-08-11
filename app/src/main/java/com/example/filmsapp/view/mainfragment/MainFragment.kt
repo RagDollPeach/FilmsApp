@@ -1,14 +1,17 @@
 package com.example.filmsapp.view.mainfragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmsapp.MAIN
+import com.example.filmsapp.MyApplication
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentMainBinding
+import com.example.filmsapp.model.dto.MovieResult
+import com.example.filmsapp.view.favoritefragment.FavoriteFragment
 
 class MainFragment : Fragment() {
 
@@ -48,9 +51,16 @@ class MainFragment : Fragment() {
             .commit()
     }
 
+    companion object {
+        fun onMovieClick(model: MovieResult) {
+            val bundle = Bundle()
+            bundle.putSerializable("movie", model)
+            MAIN.navController.navigate(R.id.action_mainFragment_to_detailsFragment, bundle)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 }

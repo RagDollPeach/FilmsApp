@@ -1,5 +1,7 @@
 package com.example.filmsapp.model.dto
 
+import java.io.Serializable
+
 data class MovieResult(
     val adult: Boolean,
     val backdrop_path: String,
@@ -15,4 +17,4 @@ data class MovieResult(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) : Serializable
