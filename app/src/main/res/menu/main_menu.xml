@@ -8,4 +8,9 @@
         android:title="@string/favorite"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/favorite"
+        app:showAsAction="ifRoom" />
 </menu>
