@@ -42,6 +42,12 @@ class MainFragment : Fragment() {
         viewModel.myMovies.observe(viewLifecycleOwner) { list ->
             adapter.setList(list.body()!!.results)
         }
+        val scrollListener = recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+            }
+        })
     }
 
     companion object {

@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.filmsapp.databinding.ActivityMainBinding
 import com.example.filmsapp.view.details.DetailsFragment
+import com.example.filmsapp.view.favoritefragment.FavoriteAdapter
 import com.example.filmsapp.view.favoritefragment.FavoriteFragment
 import com.example.filmsapp.view.mainfragment.MainFragment
 
@@ -28,6 +29,19 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
     }
 
+    private fun startFragment(incomeFragment: Fragment?) {
+        val fragment = supportFragmentManager.findFragmentByTag("tag")
+
+        if (fragment == null) {
+            supportFragmentManager.apply {
+                beginTransaction()
+                    .replace(R.id.container, incomeFragment!!, "tag")
+                    .addToBackStack("")
+                    .commit()
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -38,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_favorite -> {
                 if (MainFragment.mainFlag) {
                     navController.navigate(R.id.action_mainFragment_to_favoriteFragment)
+                   // startFragment(FavoriteFragment()) // вот это не работает
                     MainFragment.mainFlag = false
                 } else if (DetailsFragment.detailsFlag) {
                     navController.navigate(R.id.action_detailsFragment_to_favoriteFragment)
