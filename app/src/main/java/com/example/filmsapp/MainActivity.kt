@@ -21,27 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (savedInstanceState == null) {
-            startFragment(MainFragment())
-        }
         myActivity = this
         // navController = Navigation.findNavController(this,R.id.nav_host)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
-    }
-
-    private fun startFragment(incomeFragment: Fragment?) {
-        val fragment = supportFragmentManager.findFragmentByTag("tag")
-
-        if (fragment == null) {
-            supportFragmentManager.apply {
-                beginTransaction()
-                    .replace(R.id.container, incomeFragment!!, "tag")
-                    .addToBackStack("")
-                    .commit()
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -55,21 +39,18 @@ class MainActivity : AppCompatActivity() {
                 if (MainFragment.mainFlag) {
                     navController.navigate(R.id.action_mainFragment_to_favoriteFragment)
                     MainFragment.mainFlag = false
-                }
-                else if (DetailsFragment.detailsFlag) {
+                } else if (DetailsFragment.detailsFlag) {
                     navController.navigate(R.id.action_detailsFragment_to_favoriteFragment)
                     DetailsFragment.detailsFlag = false
                 }
                 true
-
             }
 
             R.id.menu_home -> {
                 if (FavoriteFragment.favoriteFlag) {
                     navController.navigate(R.id.action_favoriteFragment_to_mainFragment)
                     FavoriteFragment.favoriteFlag = false
-                }
-                else if (DetailsFragment.detailsFlag) {
+                } else if (DetailsFragment.detailsFlag) {
                     navController.navigate(R.id.action_detailsFragment_to_mainFragment)
                     DetailsFragment.detailsFlag = false
                 }

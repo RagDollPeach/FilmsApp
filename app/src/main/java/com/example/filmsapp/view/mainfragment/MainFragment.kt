@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filmsapp.myActivity
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentMainBinding
 import com.example.filmsapp.model.dto.MovieResult
+import com.example.filmsapp.myActivity
 
 class MainFragment : Fragment() {
 
