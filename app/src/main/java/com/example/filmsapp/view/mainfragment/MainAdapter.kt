@@ -11,7 +11,7 @@ import com.example.filmsapp.MyApplication
 import com.example.filmsapp.R
 import com.example.filmsapp.model.dto.MovieResult
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
+class MainAdapter(private val mainFragment: MainFragment) : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
 
     private var listMovies = emptyList<MovieResult>()
 
@@ -47,7 +47,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
     override fun onViewAttachedToWindow(holder: MyViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
-            MainFragment.onMovieClick(listMovies[holder.adapterPosition])
+            mainFragment.onMovieClick(listMovies[holder.adapterPosition])
         }
     }
 

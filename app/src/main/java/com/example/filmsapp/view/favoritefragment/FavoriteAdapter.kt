@@ -10,9 +10,9 @@ import com.example.filmsapp.BASE_IMAGE_URL
 import com.example.filmsapp.MyApplication
 import com.example.filmsapp.R
 import com.example.filmsapp.model.dto.MovieResult
-import com.example.filmsapp.view.mainfragment.MainFragment.Companion.onMovieClick
 
-class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
+
+class FavoriteAdapter(private val favoriteFragment: FavoriteFragment): RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
     private var listMovies = emptyList<MovieResult>()
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -47,7 +47,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
     override fun onViewAttachedToWindow(holder: MyViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
-            FavoriteFragment.onMovieClick(listMovies[holder.adapterPosition])
+            favoriteFragment.onMovieClick(listMovies[holder.adapterPosition])
         }
     }
 

@@ -8,17 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.filmsapp.BASE_IMAGE_URL
-import com.example.filmsapp.MyApplication
-import com.example.filmsapp.R
+import com.example.filmsapp.*
 import com.example.filmsapp.databinding.FragmentDetailsBinding
 import com.example.filmsapp.model.dto.MovieResult
-import com.example.filmsapp.myActivity
 
 class DetailsFragment : Fragment() {
-    companion object{
-        var detailsFlag = false
-    }
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!

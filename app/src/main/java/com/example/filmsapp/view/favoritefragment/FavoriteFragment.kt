@@ -5,9 +5,11 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmsapp.MainActivity
 import com.example.filmsapp.myActivity
 import com.example.filmsapp.R
 import com.example.filmsapp.databinding.FragmentFavoriteBinding
+import com.example.filmsapp.favoriteFlag
 import com.example.filmsapp.model.dto.MovieResult
 
 class FavoriteFragment : Fragment() {
@@ -15,7 +17,7 @@ class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
     lateinit var recycler: RecyclerView
-    private val adapter by lazy { FavoriteAdapter() }
+    private val adapter by lazy { FavoriteAdapter(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +43,11 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    companion object {
-        fun onMovieClick(model: MovieResult) {
-            val bundle = Bundle()
-            bundle.putSerializable("movie", model)
-            myActivity.navController.navigate(R.id.action_favoriteFragment_to_detailsFragment, bundle)
-            favoriteFlag = false
-        }
-
-        var favoriteFlag = false
+    fun onMovieClick(model: MovieResult) {
+        val bundle = Bundle()
+        bundle.putSerializable("movie", model)
+        (requireActivity() as MainActivity).navController.navigate(R.id.action_favoriteFragment_to_detailsFragment, bundle)
+        favoriteFlag = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
